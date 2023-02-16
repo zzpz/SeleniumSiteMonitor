@@ -7,7 +7,7 @@ Uses a headlesss browser to execute browser/client side JS to bring in the data.
 Requests library insufficient as it doesn't make additional API calls
 clientside.
 
-Soup2.py is a simple AWS-SNS topic --> SMS sending feature to notify me when I
+Soup3.py is a simple AWS-SNS topic --> SMS sending feature to notify me when I
 am not at computer.
 
 Wiring the two together is a future endeavour as is ironing out the bugs. For
