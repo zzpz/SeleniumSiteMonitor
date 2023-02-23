@@ -2,13 +2,17 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from timeit import default_timer as timer
+from soup3 import sendMSG
 import os
 import random
 
 JSON_FILE = "WebsiteStates.json"
 start = timer()
+from dotenv import load_dotenv
 
+load_dotenv()
 
+send = True
 url_param = os.environ["ENV_URL"]
 url = url_param
 op = webdriver.ChromeOptions()
@@ -37,7 +41,9 @@ while True:
     soup = BeautifulSoup(driver.page_source, "html.parser")
     for link in soup.find_all("span", {"class": "snize-thumbnail"}):
         if not (link.img["alt"] in imgs):
-            alert()
+            if send:
+                sendMSG(os.environ["MSG"])
+                send = False
             print("NOT FOUND:" + link.img["alt"])
 
     end = timer()

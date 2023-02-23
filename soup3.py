@@ -14,5 +14,7 @@ def sendMSG(msg):
     sns = boto3.client("sns")
     topic_arn = config["TOPIC_ARN"]
     # publish a message to the topic
-    response = sns.publish(TopicArn=topic_arn, Message="It's happening")
+    response = sns.publish(
+        TopicArn=topic_arn, Message=(msg if msg else "It's Happening")
+    )
     print(response)
